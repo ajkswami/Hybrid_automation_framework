@@ -1,0 +1,2 @@
+# Rest_assured_automation_framework
+Its about the Postman sample Rest_assured_automation_framework using Python
