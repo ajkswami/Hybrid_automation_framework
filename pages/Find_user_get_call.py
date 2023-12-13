@@ -1,5 +1,6 @@
 import requests
 import jsonpath
+import json
 
 
 def find_user_get():
@@ -12,9 +13,20 @@ def find_user_get():
 
     response = requests.get(url=url, headers=headers)
 
-    print(response.status_code)
-    print(response.json())
-    return response
+    # converts json to dict
+
+    resp_dict = json.loads(response.text)
+    support_url = resp_dict['support']['url']
+    print(support_url)
+
+    # print(response.status_code)
+    # print(response.json())
+
+    print(resp_dict)
+
+    print(resp_dict['data'])
+
+    return response, resp_dict
 
 
-response = find_user_get()
+response, resp_dict = find_user_get()
