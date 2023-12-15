@@ -1,0 +1,3 @@
+http://localhost:1000/get-user/24
+{"message":"User found","user":{"user_id":24,"first_name":"Manisha","last_name":"Kasoju","email":"manisha@yahoo.com","company":"Uturn","phone":127,"salary":10000,"designation":"HR Recruit","location":"Hyderabad","isActive":true,"isDelete":false,"isIncrement":true,"user_created_at":"2023-11-30T06:42:30.000Z","user_updated_at":"2023-11-30T06:42:30.000Z"}}
+<Response [200]>
