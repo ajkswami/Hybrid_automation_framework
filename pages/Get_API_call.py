@@ -23,13 +23,15 @@ def get_call_api():
 
     #Actual reponse
 
-    response = requests.request("GET", url=main_url, headers=headers, params=get_params, data=payload)
+    response = requests.request("GET", url=main_url, headers=headers,
+                                params=get_params, data=payload)
 
 
 
     # extract response
 
     token_response = response.json()
+    print(token_response)
 
     #get name
     token_name = token_response.get('name')

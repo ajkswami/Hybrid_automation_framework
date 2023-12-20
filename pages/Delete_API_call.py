@@ -1,7 +1,7 @@
 import requests
 import json
 
-from pages.Post_API_call import  token_id
+from pages.Post_API_call import token_id
 
 
 def Delete_Api():

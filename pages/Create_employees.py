@@ -30,11 +30,18 @@ def create_employee():
         "isIncrement": True
     }
 
-    response = requests.post(url=complete_url, headers=headers, data=json.dumps(json_payload))
+    response = requests.post(url=complete_url, headers=headers,
+                             data=json.dumps(json_payload))
 
-    print(response.text)
+    json_response = response.json()
 
-    return response
+    text_response = response.text
+
+    print(text_response)
+    print(json_response)
+
+    return response,text_response,json_response
 
 
-response = create_employee()
+response,text_response,json_response = create_employee()
+

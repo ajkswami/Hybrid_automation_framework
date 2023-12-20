@@ -23,7 +23,7 @@ def get_employee():
     # Assertion for Length (Assuming the response is a single user)
     #assert len(response_json["user"]) > 0, "User data is empty"
 
-    return response
+    return response,complete_url
 
 
-response = get_employee()
+response,complete_url = get_employee()
