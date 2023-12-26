@@ -1,3 +1,4 @@
+import pytest
 from assertpy import assert_that
 import json
 import requests
@@ -83,6 +84,41 @@ def test_var_len_first_name():
 def test_not_empty():
     assert resp_data is not None
     assert resp_data.get("user") is not None and resp_data.get("message") is not None
+
+
+
+def test_isActive():
+    assert resp_data["user"]["isActive"] == True
+
+
+def test_isDeelete():
+    Deelet = resp_data["user"]["isDelete"]
+    assert  Deelet == False , f"Expected : False , Actual is {Deelet}"
+
+def test_iscreated():
+    user_created = resp_data["user"]["user_created_at"]
+    user_updated = resp_data["user"]["user_updated_at"]
+
+    assert  user_created and user_updated is not None , (f"Expected is data , Actual is "
+                                                         f"{user_created}{user_updated}")
+
+# Handling multiple userids through parametrization
+test_data= [(24,"Manisha"),(25,"Mounika"),(26,"Somesh")]
+@pytest.mark.parametrize("user_id,expected_name",test_data)
+def test_check_multiple_responses_of_users(user_id,expected_name):
+    response = requests.get(f"http://localhost:1000/get-user/{user_id}")
+    response_data = response.json()
+    assert response_data["user"]["first_name"] == expected_name
+
+
+
+user_data = [(24,"manisha@yahoo.com"),(25,"mounika@gmail.com"),(26,"somesh@gmail.com")]
+
+@pytest.mark.parametrize("user_id,expected_val",user_data)
+def test_user_data(user_id,expected_val):
+    r= requests.get(f"http://localhost:1000/get-user/{user_id}")
+    r_data = r.json()
+    assert r_data["user"]["email"] == expected_val
 
 
 
